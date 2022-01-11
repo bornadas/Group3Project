@@ -1,6 +1,6 @@
 pipeline {
     environment {
-            PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Tools\\Java\\jdk-17.0.1\\bin"
+            PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Program Files\\Java\\jdk-17.0.1\\bin"
     }
     agent {   label 'Grupp3JMeter'   }
     
