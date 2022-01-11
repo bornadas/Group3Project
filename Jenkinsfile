@@ -13,8 +13,7 @@ pipeline {
         }
     }
     post {
-        success {
-            junit 'target/surefire-reports/**/*.xml'                       
+       success {   junit allowEmptyResults: true, testResults: "${WORKSPACE}/test-results/*.xml"                      
         }
     }
 }
