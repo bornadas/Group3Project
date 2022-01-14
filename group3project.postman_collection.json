@@ -326,9 +326,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"FP1\");\r",
-							"});\r",
+							"\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
