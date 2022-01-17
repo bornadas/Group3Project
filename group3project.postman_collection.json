@@ -18,6 +18,10 @@
 							"\r",
 							"pm.test(\"Response time is more than 200ms\", function () {\r",
 							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Clothes\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -29,31 +33,13 @@
 			},
 			"request": {
 				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "key",
-							"value": "products",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "319B4R11VVY17EDZL6YFDZ2XFQLEGE8D",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "products",
-							"value": "319B4R11VVY17EDZL6YFDZ2XFQLEGE8D",
-							"type": "default"
-						}
-					]
+					"formdata": []
 				},
 				"url": {
 					"raw": "{{Url}}/3-clothes",
@@ -78,8 +64,12 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
+							"pm.test(\"Product is present\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"Brown bear - Vector graphics\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Art category is shown\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Art\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -113,6 +103,10 @@
 							"});\r",
 							"pm.test(\"Content-Type is present\", function () {\r",
 							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Accessories\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -148,6 +142,23 @@
 		},
 		{
 			"name": "The Filter functions -Men",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Men\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is more than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -177,7 +188,24 @@
 			"response": []
 		},
 		{
-			"name": "The filter function -Women",
+			"name": "The Filter function -Women",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Women\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is more than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -201,6 +229,23 @@
 		},
 		{
 			"name": "GETStoresReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Store present\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Dade County\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -228,7 +273,17 @@
 							"});\r",
 							"pm.test(\"Status code name has string\", function () {\r",
 							"    pm.response.to.have.status(\"OK\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"First Name is FinalProject\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"FinalProject\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First Name is Jensen\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Jensen\");\r",
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -266,7 +321,7 @@
 						},
 						{
 							"key": "email",
-							"value": "FPJensenG3@gmail.com",
+							"value": "FPJensenG03@gmail.com",
 							"type": "text"
 						},
 						{
@@ -326,10 +381,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"\r",
-							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Email ID is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"abc@test.com\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -349,7 +406,7 @@
 						},
 						{
 							"key": "email",
-							"value": "FP1@jensen.com",
+							"value": "abc@test.com",
 							"type": "text"
 						},
 						{
@@ -365,7 +422,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{Url}}/login?back=my-account",
+					"raw": "{{Url}}/login?back=my-account&ws_key=EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK",
 					"host": [
 						"{{Url}}"
 					],
@@ -376,6 +433,10 @@
 						{
 							"key": "back",
 							"value": "my-account"
+						},
+						{
+							"key": "ws_key",
+							"value": "EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK"
 						}
 					]
 				}
@@ -391,7 +452,13 @@
 						"exec": [
 							"pm.test(\"Successful POST request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Search result contains jacket\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"jacket\");\r",
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -479,6 +546,27 @@
 		},
 		{
 			"name": "addToCartReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product name is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Brown bear - Vector graphics\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product quantity is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"91\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -492,7 +580,7 @@
 						},
 						{
 							"key": "qty",
-							"value": "100",
+							"value": "91",
 							"type": "default"
 						},
 						{
@@ -526,6 +614,23 @@
 		},
 		{
 			"name": "deletefromcartReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"There are no more items in your cart\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -560,6 +665,176 @@
 						{
 							"key": "ws_key",
 							"value": "N3GURVIGKHCY725K9YFEMESRXERVAJY6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddressReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"City name is Gothenburg\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Gothenburg\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Address contains Storgatan1\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Storgatan1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Country name is United states\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"United States\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "back",
+							"value": "my-account",
+							"type": "text"
+						},
+						{
+							"key": "saveAddress",
+							"value": "delivery",
+							"type": "default"
+						},
+						{
+							"key": "token",
+							"value": "cb6a66ba3cc2b43e39b9081d9a4181fa",
+							"type": "default"
+						},
+						{
+							"key": "address1",
+							"value": "Storgatan1",
+							"type": "default"
+						},
+						{
+							"key": "city",
+							"value": "Gothenburg",
+							"type": "default"
+						},
+						{
+							"key": "id_state",
+							"value": "5",
+							"type": "default"
+						},
+						{
+							"key": "postcode",
+							"value": "12345",
+							"type": "default"
+						},
+						{
+							"key": "id_country",
+							"value": "21",
+							"type": "default"
+						},
+						{
+							"key": "confirm-addresses",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "submitAddress",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "select_payment_option",
+							"value": "payment-option-1",
+							"type": "default"
+						},
+						{
+							"key": "conditions_to_approve[terms-and-conditions]",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "payment-confirmation",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Url}}/order?ws_key=58RITWB56ZMT4NYXFHY7EWD9HWIQV46Q",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"order"
+					],
+					"query": [
+						{
+							"key": "ws_key",
+							"value": "58RITWB56ZMT4NYXFHY7EWD9HWIQV46Q"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paymentReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Order confirmation messsage shown\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Your order is confirmed\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product name is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Brown bear - Vector graphics\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Payment method is correctly shown\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Payment method: Bank transfer\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{Url}}/module/ps_wirepayment/validation?ws_key=58RITWB56ZMT4NYXFHY7EWD9HWIQV46Q",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"module",
+						"ps_wirepayment",
+						"validation"
+					],
+					"query": [
+						{
+							"key": "ws_key",
+							"value": "58RITWB56ZMT4NYXFHY7EWD9HWIQV46Q"
 						}
 					]
 				}
