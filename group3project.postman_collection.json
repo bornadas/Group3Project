@@ -151,8 +151,12 @@
 							"    pm.expect(pm.response.text()).to.include(\"Men\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response time is more than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -198,8 +202,12 @@
 							"    pm.expect(pm.response.text()).to.include(\"Women\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response time is more than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -262,189 +270,7 @@
 			"response": []
 		},
 		{
-			"name": "create user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-							"});\r",
-							"pm.test(\"Status code name has string\", function () {\r",
-							"    pm.response.to.have.status(\"OK\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"First Name is FinalProject\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"FinalProject\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"First Name is Jensen\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"Jensen\");\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id_gender",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "firstname",
-							"value": "FinalProject",
-							"type": "text"
-						},
-						{
-							"key": "lastname",
-							"value": "Jensen",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "FPJensenG03@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1234567890",
-							"type": "text"
-						},
-						{
-							"key": "optin",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "customer_privacy",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "newsletter",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "psgdpr",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "submitCreate",
-							"value": "1",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{Url}}/login?back=my-account",
-					"host": [
-						"{{Url}}"
-					],
-					"path": [
-						"login"
-					],
-					"query": [
-						{
-							"key": "back",
-							"value": "my-account"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "LoginReq",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Email ID is correct\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"abc@test.com\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "back",
-							"value": "my-account",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "abc@test.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1234567890",
-							"type": "text"
-						},
-						{
-							"key": "submitLogin",
-							"value": "1",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{Url}}/login?back=my-account&ws_key=EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK",
-					"host": [
-						"{{Url}}"
-					],
-					"path": [
-						"login"
-					],
-					"query": [
-						{
-							"key": "back",
-							"value": "my-account"
-						},
-						{
-							"key": "ws_key",
-							"value": "EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search and sort",
+			"name": "search&SortReq",
 			"event": [
 				{
 					"listen": "test",
@@ -494,50 +320,6 @@
 						{
 							"key": "ws_key",
 							"value": "FT8P5R45LP5WM24TNIP2VV314EX2IKIN"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "user Logout req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{Url}}/?mylogout=1&ws_key=EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK",
-					"host": [
-						"{{Url}}"
-					],
-					"path": [
-						""
-					],
-					"query": [
-						{
-							"key": "mylogout",
-							"value": "1"
-						},
-						{
-							"key": "ws_key",
-							"value": "EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK"
 						}
 					]
 				}
@@ -613,18 +395,18 @@
 			"response": []
 		},
 		{
-			"name": "deletefromcartReq",
+			"name": "LoginReq",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"There are no more items in your cart\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Email ID is correct\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"abc@test.com\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -638,33 +420,43 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "id_product",
-							"value": "13",
-							"type": "default"
+							"key": "back",
+							"value": "my-account",
+							"type": "text"
 						},
 						{
-							"key": "delete",
+							"key": "email",
+							"value": "abc@test.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "submitLogin",
 							"value": "1",
-							"type": "default"
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{Url}}/cart?action=show&ws_key=N3GURVIGKHCY725K9YFEMESRXERVAJY6",
+					"raw": "{{Url}}/login?back=my-account&ws_key=EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK",
 					"host": [
 						"{{Url}}"
 					],
 					"path": [
-						"cart"
+						"login"
 					],
 					"query": [
 						{
-							"key": "action",
-							"value": "show"
+							"key": "back",
+							"value": "my-account"
 						},
 						{
 							"key": "ws_key",
-							"value": "N3GURVIGKHCY725K9YFEMESRXERVAJY6"
+							"value": "EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK"
 						}
 					]
 				}
@@ -835,6 +627,222 @@
 						{
 							"key": "ws_key",
 							"value": "58RITWB56ZMT4NYXFHY7EWD9HWIQV46Q"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletefromcartReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"There are no more items in your cart\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_product",
+							"value": "13",
+							"type": "default"
+						},
+						{
+							"key": "delete",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Url}}/cart?action=show&ws_key=N3GURVIGKHCY725K9YFEMESRXERVAJY6",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"cart"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "show"
+						},
+						{
+							"key": "ws_key",
+							"value": "N3GURVIGKHCY725K9YFEMESRXERVAJY6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LogoutReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{Url}}/?mylogout=1&ws_key=EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "mylogout",
+							"value": "1"
+						},
+						{
+							"key": "ws_key",
+							"value": "EMLX2FKDSD1C7V6UDXVBMEWBCAK7U6WK"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUserReq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First Name is FinalProject\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"FinalProject\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First Name is Jensen\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Jensen\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_gender",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "FinalProject",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Jensen",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "FPJensenG031@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234567890",
+							"type": "text"
+						},
+						{
+							"key": "optin",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "customer_privacy",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "newsletter",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "psgdpr",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "submitCreate",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Url}}/login?back=my-account",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "back",
+							"value": "my-account"
 						}
 					]
 				}
